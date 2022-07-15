@@ -49,5 +49,33 @@ resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_ssh" {
   port_range_min    = 22
   port_range_max    = 22
   remote_ip_prefix  = "0.0.0.0/0"
-  description = "Allow SSH from anywhere"
+  description       = "Allow SSH from anywhere"
+}
+
+resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_outgoing" {
+  security_group_id = huaweicloud_networking_secgroup.secgroup_ssh.id
+  direction         = "egress"
+  ethertype         = "IPv4"
+  remote_ip_prefix  = "0.0.0.0/0"
+  description       = "Allow outgoing communication"
+}
+
+resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_self" {
+  security_group_id = huaweicloud_networking_secgroup.secgroup_ssh.id
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  remote_group_id   = huaweicloud_networking_secgroup.secgroup_ssh.id
+  description       = "Allow communication inside security group"
+}
+
+resource "huaweicloud_vpc_eip" "eip_cce_cluster" {
+  publicip {
+    type = "5_bgp"
+  }
+  bandwidth {
+    share_type  = "PER"
+    name        = "bandwidth-cce"
+    size        = 10
+    charge_mode = "traffic"
+  }
 }
