@@ -8,5 +8,6 @@
     - ``sed -i 's@PASSWORD_DATABASE@'"<new-password>"'@' ./initialize-db/votedb.sql``
 
     <pre>
-        sample <b>sample</b> sample
+    - sed -i 's@PASSWORD_DATABASE@'"<b>\<new-password\></b>"'@' ./initialize-db/emojidb.sql
+    - sed -i 's@PASSWORD_DATABASE@'"<b>\<new-password\></b>"'@' ./initialize-db/votedb.sql
     </pre>
