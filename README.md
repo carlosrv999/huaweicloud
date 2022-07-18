@@ -6,3 +6,7 @@
 2. Restore database with the following command:
     - ``sed -i 's@PASSWORD_DATABASE@'"<new-password>"'@' ./initialize-db/emojidb.sql``
     - ``sed -i 's@PASSWORD_DATABASE@'"<new-password>"'@' ./initialize-db/votedb.sql``
+
+    <pre>
+        sample <b>sample</b> sample
+    </pre>
