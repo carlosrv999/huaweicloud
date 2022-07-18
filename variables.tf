@@ -9,3 +9,11 @@ variable "secret_key" {
 variable "region" {
   type = string
 }
+
+variable "db_root_password" {
+  type = string
+}
+
+variable "emojivote_db_password" {
+  type = string
+}

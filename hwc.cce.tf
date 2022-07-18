@@ -12,9 +12,9 @@ resource "huaweicloud_cce_cluster" "cluster_cce" {
 
 resource "huaweicloud_cce_node" "node_1" {
   cluster_id        = huaweicloud_cce_cluster.cluster_cce.id
-  availability_zone = "la-south-2a"
+  availability_zone = "${var.region}a"
   flavor_id         = "c6s.large.2"
-  key_pair          = "matebook"
+  key_pair          = huaweicloud_compute_keypair.keypair_demo.name
   os                = "EulerOS 2.9"
   subnet_id         = huaweicloud_vpc_subnet.subnet-az2-private.id
 
