@@ -39,3 +39,9 @@ resource "huaweicloud_rds_instance" "rds_vote" {
   }
 
 }
+
+resource "null_resource" "update_manifests" {
+ provisioner "local-exec" {
+    command = "bash update-manifests.sh ${huaweicloud_rds_instance.rds_emoji.fixed_ip} ${huaweicloud_rds_instance.rds_vote.fixed_ip}"
+  }
+}
