@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   MYSQL_DB: dm90ZXM=
-  MYSQL_PASSWD: RGNTNUdiN0dzMlcj
+  MYSQL_PASSWD: PASSWORD_DATABASE
   MYSQL_PORT: MzMwNg==
   MYSQL_USER: dm90ZXVzZXI=
 kind: Secret
