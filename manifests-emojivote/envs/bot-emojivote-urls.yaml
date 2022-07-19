@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
-  GET_EMOJI_URL: http://emoji:3000/emoji
-  POST_VOTE_URL: http://vote:3001/votes
+  GET_EMOJI_URL: http://emoji:50050/emoji
+  POST_VOTE_URL: http://vote:50051/vote
 kind: ConfigMap
 metadata:
   name: bot-emojivote-urls
