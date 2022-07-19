@@ -83,3 +83,25 @@ spec:
     version: v1
   sessionAffinity: None
   type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: webapp-emoji
+    name: emoji-web
+  name: emoji-web
+  namespace: emojivote
+spec:
+  ports:
+  - name: emoji-web-port
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: frontend-emojivote
+    version: v1
+  sessionAffinity: None
+  type: ClusterIP
