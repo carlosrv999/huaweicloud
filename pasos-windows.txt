@@ -1,0 +1,38 @@
+1. curl -LO "https://dl.k8s.io/release/v1.21.0/bin/windows/amd64/kubectl.exe"
+
+2. Crear la carpeta kube en C:\, y poner ahi el kubectl.exe
+
+3. Agregar C:\kube al PATH
+
+4. mkdir -p $HOME/.kube
+
+5. mv -f kubeconfig.json $HOME/.kube/config
+
+PARA CONECTARSE POR VSCODE
+
+1. Usar el siguiente codigo:
+
+Host <IP_PUBLICA>
+  HostName <IP_PUBLICA>
+  User root
+  IdentityFile C:\Users\c00596430\projects\terraform\huawei-utp\keypair-terraform.pem
+
+PARA CREAR LAS IMAGENES DOCKER:
+
+1. Clonar estos 3 repositorios dentro del ECS creado (conectarse por vscode):
+
+- git clone https://github.com/carlosrv999/front-vote.git
+- git clone https://github.com/carlosrv999/vote-bot.git
+- git clone https://github.com/carlosrv999/emoji-api.git
+- git clone https://github.com/carlosrv999/vote-api.git
+
+2. Editar frontend con los endpoints siguientes:
+
+http://<nginx_ingress_controller_ip>/emoji
+http://<nginx_ingress_controller_ip>/vote
+
+3. Construir imagenes docker y pushearlas al SWR
+
+4. Actualizar kubernetes manifests
+
+5. Ejecutar los yamls
