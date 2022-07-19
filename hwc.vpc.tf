@@ -86,6 +86,17 @@ resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_pods_rds" {
   description       = "Allow pods to access RDS"
 }
 
+resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_nodes_rds" {
+  security_group_id = huaweicloud_networking_secgroup.secgroup_rds.id
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 3306
+  port_range_max    = 3306
+  remote_group_id   = sort(data.huaweicloud_compute_instance.node.security_group_ids)[0]
+  description       = "Allow nodes to access RDS"
+}
+
 resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_docker_instance" {
   security_group_id = huaweicloud_networking_secgroup.secgroup_rds.id
   direction         = "ingress"
