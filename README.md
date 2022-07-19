@@ -13,4 +13,6 @@
     - sed 's@PASSWORD_DATABASE@'"<b>new_db_password</b>"'@' ./initialize-db/votedb.sql | mysql -u root -h <b>rds_vote_ip</b> -p
 </pre>
 
-5. Run kubernetes manifests
+5. Login to Kubernetes
+    ``cp kubeconfig.json ~/.kube/config``
+6. Run kubernetes manifests
