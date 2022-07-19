@@ -13,7 +13,31 @@ resource "huaweicloud_cce_cluster" "cluster_cce" {
 resource "huaweicloud_cce_node" "node_1" {
   cluster_id        = huaweicloud_cce_cluster.cluster_cce.id
   availability_zone = "${var.region}a"
-  flavor_id         = "c6s.large.2"
+  flavor_id         = "c6s.xlarge.2"
+  key_pair          = huaweicloud_compute_keypair.keypair_demo.name
+  os                = "EulerOS 2.9"
+  subnet_id         = huaweicloud_vpc_subnet.subnet-az1-private.id
+
+  root_volume {
+    extend_params  = {}
+    hw_passthrough = false
+    size           = 40
+    volumetype     = "SAS"
+  }
+
+  data_volumes {
+    extend_params  = {}
+    hw_passthrough = false
+    size           = 100
+    volumetype     = "SAS"
+  }
+
+}
+
+resource "huaweicloud_cce_node" "node_2" {
+  cluster_id        = huaweicloud_cce_cluster.cluster_cce.id
+  availability_zone = "${var.region}b"
+  flavor_id         = "c6s.xlarge.2"
   key_pair          = huaweicloud_compute_keypair.keypair_demo.name
   os                = "EulerOS 2.9"
   subnet_id         = huaweicloud_vpc_subnet.subnet-az2-private.id
