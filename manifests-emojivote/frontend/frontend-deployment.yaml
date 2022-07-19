@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    description: ""
+  labels:
+    appgroup: ""
+    version: v1
+  name: frontend-emojivote
+  namespace: emojivote
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-emojivote
+      version: v1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        metrics.alpha.kubernetes.io/custom-endpoints: '[{"api":"","path":"","port":"","names":""}]'
+      labels:
+        app: frontend-emojivote
+        version: v1
+    spec:
+      containers:
+        image: swr.la-south-2.myhuaweicloud.com/demo-huawei/voteweb:v1
+        imagePullPolicy: IfNotPresent
+        name: frontend-container
+      imagePullSecrets:
+      - name: default-secret
+      restartPolicy: Always

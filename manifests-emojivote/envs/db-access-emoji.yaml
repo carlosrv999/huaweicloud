@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  MYSQL_DB: ZW1vamk=
+  MYSQL_PASSWD: RGNTNUdiN0dzMlcj
+  MYSQL_PORT: MzMwNg==
+  MYSQL_USER: ZW1vaml1c2Vy
+kind: Secret
+metadata:
+  name: db-access-emoji
+  namespace: emojivote
+type: Opaque

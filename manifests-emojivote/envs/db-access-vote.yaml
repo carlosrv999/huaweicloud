@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  MYSQL_DB: dm90ZXM=
+  MYSQL_PASSWD: RGNTNUdiN0dzMlcj
+  MYSQL_PORT: MzMwNg==
+  MYSQL_USER: dm90ZXVzZXI=
+kind: Secret
+metadata:
+  name: db-access-vote
+  namespace: emojivote
+type: Opaque

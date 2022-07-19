@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  GET_EMOJI_URL: http://emoji:3000/emoji
+  POST_VOTE_URL: http://vote:3001/votes
+kind: ConfigMap
+metadata:
+  name: bot-emojivote-urls
+  namespace: emojivote

@@ -25,3 +25,7 @@ output "rds_emoji_private_ip" {
 output "rds_vote_private_ip" {
   value = huaweicloud_rds_instance.rds_vote.fixed_ip
 }
+
+output "docker_instance_public_ip" {
+  value = huaweicloud_vpc_eip.docker_instance_eip.address
+}

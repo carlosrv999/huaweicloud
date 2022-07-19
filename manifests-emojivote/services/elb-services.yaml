@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubernetes.io/elb.id: cbeee0e6-faed-4e47-a468-a03c56f5d9c2
+  labels:
+    app: emoji-api
+    name: emoji-api-loadbalancer
+  name: emoji-api-loadbalancer
+  namespace: emojivote
+spec:
+  ports:
+  - name: emoji-api-service
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: emoji-api
+    version: v1
+  type: LoadBalancer
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubernetes.io/elb.id: cbeee0e6-faed-4e47-a468-a03c56f5d9c2
+  labels:
+    app: vote-api
+    name: vote-api-loadbalancer
+  name: vote-api-loadbalancer
+  namespace: emojivote
+spec:
+  ports:
+  - name: vote-api-service
+    port: 3001
+    protocol: TCP
+    targetPort: 3001
+  selector:
+    app: vote-api
+    version: v1
+  type: LoadBalancer
