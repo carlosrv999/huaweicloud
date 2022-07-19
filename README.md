@@ -14,5 +14,7 @@
 </pre>
 
 5. Login to Kubernetes
+
     ``cp kubeconfig.json ~/.kube/config``
+    
 6. Run kubernetes manifests
