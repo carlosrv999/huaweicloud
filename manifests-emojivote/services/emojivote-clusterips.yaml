@@ -39,3 +39,47 @@ spec:
     version: v1
   sessionAffinity: None
   type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: vote-api
+    name: vote-rest
+  name: vote-rest
+  namespace: emojivote
+spec:
+  ports:
+  - name: vote-api-rest
+    port: 3001
+    protocol: TCP
+    targetPort: 3001
+  selector:
+    app: vote-api
+    version: v1
+  sessionAffinity: None
+  type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: emoji-api
+    name: emoji-rest
+  name: emoji-rest
+  namespace: emojivote
+spec:
+  ports:
+  - name: emoji-api-rest
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: emoji-api
+    version: v1
+  sessionAffinity: None
+  type: ClusterIP

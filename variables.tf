@@ -1,3 +1,7 @@
+data "huaweicloud_compute_instance" "node" {
+  name = huaweicloud_cce_node.node_1.name
+}
+
 variable "access_key" {
   type = string
 }

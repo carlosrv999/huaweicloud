@@ -58,10 +58,6 @@ resource "huaweicloud_cce_node" "node_2" {
 
 }
 
-data "huaweicloud_compute_instance" "node" {
-  name = huaweicloud_cce_node.node_1.name
-}
-
 resource "local_file" "create_kubeconfig_file" {
   content  = huaweicloud_cce_cluster.cluster_cce.kube_config_raw
   filename = "kubeconfig.json"
