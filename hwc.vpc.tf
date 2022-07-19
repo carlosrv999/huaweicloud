@@ -151,3 +151,25 @@ resource "huaweicloud_vpc_eip" "eip_cce_cluster" {
     charge_mode = "traffic"
   }
 }
+
+resource "huaweicloud_vpc_eip" "eip_nginx_ingress_controller" {
+  publicip {
+    type = "5_bgp"
+  }
+  bandwidth {
+    share_type  = "PER"
+    name        = "test"
+    size        = 100
+    charge_mode = "traffic"
+  }
+}
+
+resource "huaweicloud_lb_loadbalancer" "elb_nginx_ingress_controller" {
+  name          = "elb-tf-nginx-ingress-controller-k8s"
+  vip_subnet_id = huaweicloud_vpc_subnet.subnet-az2-public.subnet_id
+}
+
+resource "huaweicloud_vpc_eip_associate" "elb_nginx_eip_associate" {
+  public_ip = huaweicloud_vpc_eip.eip_nginx_ingress_controller.address
+  port_id   = huaweicloud_lb_loadbalancer.elb_nginx_ingress_controller.vip_port_id
+}

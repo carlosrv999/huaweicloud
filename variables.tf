@@ -29,3 +29,7 @@ output "rds_vote_private_ip" {
 output "docker_instance_public_ip" {
   value = huaweicloud_vpc_eip.docker_instance_eip.address
 }
+
+output "nginx_ingress_controller_ip" {
+  value = huaweicloud_vpc_eip.eip_nginx_ingress_controller.address
+}
