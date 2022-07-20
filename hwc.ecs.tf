@@ -34,3 +34,21 @@ resource "huaweicloud_compute_eip_associate" "associated" {
   public_ip   = huaweicloud_vpc_eip.docker_instance_eip.address
   instance_id = huaweicloud_compute_instance.ssh_docker_instance.id
 }
+
+resource "null_resource" "execute_commands" {
+  provisioner "remote-exec" {
+    connection {
+      host        = "${huaweicloud_vpc_eip.docker_instance_eip.address}"
+      user        = "root"
+      type        = "ssh"
+      private_key = "${file("./keypair-terraform.pem")}"
+      timeout     = "2m"
+    }
+
+    inline = [
+      "git clone https://github.com/carlosrv999/huaweicloud.git",
+      "cd huaweicloud",
+      "echo Carlos > carlos.txt",
+    ]
+  }
+}
