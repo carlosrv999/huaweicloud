@@ -158,7 +158,7 @@ resource "huaweicloud_vpc_eip" "eip_nginx_ingress_controller" {
   }
   bandwidth {
     share_type  = "PER"
-    name        = "test"
+    name        = "bandwidth-nginx-ingress"
     size        = 100
     charge_mode = "traffic"
   }
