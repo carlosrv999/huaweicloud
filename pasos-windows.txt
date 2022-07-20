@@ -43,4 +43,10 @@ ssh -i keypair-terraform.pem root@ip_publica mkdir /root/.kube
 scp -i keypair-terraform.pem kubeconfig.json root@ip_publica:/root/.kube/config
 ssh -i keypair-terraform.pem root@ip_publica
 
+Descargar kubectl
+
+curl -LO https://dl.k8s.io/release/v1.21.0/bin/linux/amd64/kubectl
+chmod +x kubectl
+mv -f kubectl /usr/local/bin
+
 https://linkerd.io/2.11/getting-started/
