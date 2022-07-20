@@ -4,6 +4,7 @@
 provider "registry.terraform.io/hashicorp/local" {
   version = "2.2.3"
   hashes = [
+    "h1:3bH88Z7tlWvcoubm6hQUBk3s9bSIJC8bVHQz749B87E=",
     "h1:aWp5iSUxBGgPv1UnV5yag9Pb0N+U1I0sZb38AXBFO8A=",
     "zh:04f0978bb3e052707b8e82e46780c371ac1c66b689b4a23bbc2f58865ab7d5c0",
     "zh:6484f1b3e9e3771eb7cc8e8bab8b35f939a55d550b3f4fb2ab141a24269ee6aa",
@@ -23,6 +24,7 @@ provider "registry.terraform.io/hashicorp/local" {
 provider "registry.terraform.io/hashicorp/null" {
   version = "3.1.1"
   hashes = [
+    "h1:1J3nqAREzuaLE7x98LEELCCaMV6BRiawHSg9MmFvfQo=",
     "h1:71sNUDvmiJcijsvfXpiLCz0lXIBSsEJjMxljt7hxMhw=",
     "zh:063466f41f1d9fd0dd93722840c1314f046d8760b1812fa67c34de0afcba5597",
     "zh:08c058e367de6debdad35fc24d97131c7cf75103baec8279aba3506a08b53faf",
@@ -44,6 +46,7 @@ provider "registry.terraform.io/huaweicloud/huaweicloud" {
   constraints = "~> 1.38.1"
   hashes = [
     "h1:FqAe73dZECDsOEpdEZMpFzvIq6o84w8CGf5JWEfvU/4=",
+    "h1:XZCeV4qlzRiP3Ci4TCwx2wwtFlZ332m1YSnHa5oU+RM=",
     "zh:06069dbeb3e3294e2c1dab922b553a7eda5063312a5379690efa77346dfcfa5b",
     "zh:1753a85112b5d81c3c29ef9fe6b866bf57cf449f225446f9aa718261560e0813",
     "zh:423b64622fd11915012af28d4c2c3298bfb4d09e2cbe6ec96452dd4c3776b0a2",
