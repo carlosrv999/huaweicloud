@@ -51,7 +51,7 @@ spec:
             secretKeyRef:
               key: MYSQL_USER
               name: db-access-vote
-        image: swr.la-south-2.myhuaweicloud.com/demo-huawei/voteapi:v1
+        image: swr.la-south-2.myhuaweicloud.com/demo-huawei/voteapi:latest
         imagePullPolicy: IfNotPresent
         name: vote-container
       imagePullSecrets:

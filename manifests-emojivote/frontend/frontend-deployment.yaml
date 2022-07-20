@@ -25,7 +25,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: swr.la-south-2.myhuaweicloud.com/demo-huawei/webapp-emojivote:v5
+      - image: swr.la-south-2.myhuaweicloud.com/demo-huawei/webapp-emojivote:latest
         imagePullPolicy: IfNotPresent
         name: frontend-container
       imagePullSecrets:

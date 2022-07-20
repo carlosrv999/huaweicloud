@@ -51,7 +51,7 @@ spec:
             secretKeyRef:
               key: MYSQL_USER
               name: db-access-emoji
-        image: swr.la-south-2.myhuaweicloud.com/demo-huawei/emojiapi:v1
+        image: swr.la-south-2.myhuaweicloud.com/demo-huawei/emojiapi:latest
         imagePullPolicy: IfNotPresent
         name: emoji-container
       imagePullSecrets:

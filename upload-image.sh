@@ -15,6 +15,10 @@ git -C /tmp clone https://github.com/carlosrv999/vote-bot.git
 
 # Login to repository and push image. Refer to https://support.huaweicloud.com/intl/en-us/usermanual-swr/swr_01_1000.html
 
+sed -i "/this.http.get/c\    return this.http.get<Emoji[]>('http://${nginx_ingress_eip}/emoji')" /tmp/front-vote/src/app/shared/emoji.service.ts
+sed -i "/this.http.post/c\    return this.http.post('http://${nginx_ingress_eip}/vote', { \"emoji_id\": emoji_id })" /tmp/front-vote/src/app/shared/voting.service.ts
+sed -i "/this.http.get/c\    return this.http.get<Vote[]>('http://${nginx_ingress_eip}/vote')" /tmp/front-vote/src/app/shared/voting.service.ts
+
 docker build -t swr.${region}.myhuaweicloud.com/$swr_repo_name/webapp-emojivote:latest /tmp/front-vote
 docker build -t swr.${region}.myhuaweicloud.com/$swr_repo_name/emojiapi:latest /tmp/emoji-api
 docker build -t swr.${region}.myhuaweicloud.com/$swr_repo_name/voteapi:latest /tmp/vote-api
@@ -24,9 +28,5 @@ docker push swr.${region}.myhuaweicloud.com/$swr_repo_name/webapp-emojivote:late
 docker push swr.${region}.myhuaweicloud.com/$swr_repo_name/emojiapi:latest
 docker push swr.${region}.myhuaweicloud.com/$swr_repo_name/voteapi:latest
 docker push swr.${region}.myhuaweicloud.com/$swr_repo_name/votebot:latest
-
-sed -i "/this.http.get/c\    return this.http.get<Emoji[]>('http://${nginx_ingress_eip}/emoji')" /tmp/front-vote/src/app/shared/emoji.service.ts
-sed -i "/this.http.post/c\    return this.http.post('http://${nginx_ingress_eip}/vote', { \"emoji_id\": emoji_id })" /tmp/front-vote/src/app/shared/voting.service.ts
-sed -i "/this.http.get/c\    return this.http.get<Vote[]>('http://${nginx_ingress_eip}/vote')" /tmp/front-vote/src/app/shared/voting.service.ts
 
 echo "$(date) Success"

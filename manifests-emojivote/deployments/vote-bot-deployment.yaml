@@ -36,7 +36,7 @@ spec:
             configMapKeyRef:
               key: POST_VOTE_URL
               name: bot-emojivote-urls
-        image: swr.la-south-2.myhuaweicloud.com/demo-huawei/votebot:v1
+        image: swr.la-south-2.myhuaweicloud.com/demo-huawei/votebot:latest
         imagePullPolicy: IfNotPresent
         name: votebot-container
       imagePullSecrets:
