@@ -36,3 +36,11 @@ http://<nginx_ingress_controller_ip>/vote
 4. Actualizar kubernetes manifests
 
 5. Ejecutar los yamls
+
+BONUS: Instalar Service Mesh
+
+ssh -i keypair-terraform.pem root@ip_publica mkdir /root/.kube
+scp -i keypair-terraform.pem kubeconfig.json root@ip_publica:/root/.kube/config
+ssh -i keypair-terraform.pem root@ip_publica
+
+https://linkerd.io/2.11/getting-started/
