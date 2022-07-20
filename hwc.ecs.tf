@@ -52,4 +52,8 @@ resource "null_resource" "execute_commands" {
       "sed 's@PASSWORD_DATABASE@'\"${var.emojivote_db_password}\"'@' ./initialize-db/votedb.sql | mysql -u root -h ${huaweicloud_rds_instance.rds_vote.fixed_ip} -p${var.db_root_password}",
     ]
   }
+
+  depends_on = [
+    huaweicloud_compute_instance.ssh_docker_instance,
+  ]
 }
