@@ -24,3 +24,9 @@ docker push swr.${region}.myhuaweicloud.com/$swr_repo_name/webapp-emojivote:late
 docker push swr.${region}.myhuaweicloud.com/$swr_repo_name/emojiapi:latest
 docker push swr.${region}.myhuaweicloud.com/$swr_repo_name/voteapi:latest
 docker push swr.${region}.myhuaweicloud.com/$swr_repo_name/votebot:latest
+
+sed -i "/this.http.get/c\    return this.http.get<Emoji[]>('http://${nginx_ingress_eip}/emoji')" /tmp/front-vote/src/app/shared/emoji.service.ts
+sed -i "/this.http.post/c\    return this.http.post('http://${nginx_ingress_eip}/vote', { \"emoji_id\": emoji_id })" /tmp/front-vote/src/app/shared/voting.service.ts
+sed -i "/this.http.get/c\    return this.http.get<Vote[]>('http://${nginx_ingress_eip}/vote')" /tmp/front-vote/src/app/shared/voting.service.ts
+
+echo "$(date) Success"
