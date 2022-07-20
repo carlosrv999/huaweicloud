@@ -48,7 +48,8 @@ resource "null_resource" "execute_commands" {
     inline = [
       "git clone https://github.com/carlosrv999/huaweicloud.git",
       "cd huaweicloud",
-      "echo Carlos > carlos.txt",
+      "sed 's@PASSWORD_DATABASE@'\"${var.emojivote_db_password}\"'@' ./initialize-db/emojidb.sql | mysql -u root -h ${huaweicloud_rds_instance.rds_emoji.fixed_ip} -p${var.db_root_password}",
+      "sed 's@PASSWORD_DATABASE@'\"${var.emojivote_db_password}\"'@' ./initialize-db/votedb.sql | mysql -u root -h ${huaweicloud_rds_instance.rds_vote.fixed_ip} -p${var.db_root_password}",
     ]
   }
 }
