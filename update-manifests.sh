@@ -14,4 +14,7 @@ sed -i "3s/.*/  MYSQL_HOST: ${vote_ip}/" ./manifests-emojivote/envs/vote-db-acce
 sed -i "4s/.*/  MYSQL_PASSWD: ${base64pass}/" ./manifests-emojivote/envs/db-access-emoji.yaml
 sed -i "4s/.*/  MYSQL_PASSWD: ${base64pass}/" ./manifests-emojivote/envs/db-access-vote.yaml
 sed -i "/- image:/c\      - image: swr.${region}.myhuaweicloud.com/${swr_repo_name}/webapp-emojivote:latest" ./manifests-emojivote/frontend/frontend-deployment.yaml
+sed -i "/image:/c\        image: swr.${region}.myhuaweicloud.com/${swr_repo_name}/emojiapi:latest" ./manifests-emojivote/deployments/emoji-api-deployment.yaml
+sed -i "/image:/c\        image: swr.${region}.myhuaweicloud.com/${swr_repo_name}/voteapi:latest" ./manifests-emojivote/deployments/vote-api-deployment.yaml
+sed -i "/image:/c\        image: swr.${region}.myhuaweicloud.com/${swr_repo_name}/votebot:latest" ./manifests-emojivote/deployments/vote-bot-deployment.yaml
 echo "$(date) SUCCESS"
