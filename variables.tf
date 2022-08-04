@@ -1,7 +1,7 @@
-data "huaweicloud_compute_instance" "node" {
+/*data "huaweicloud_compute_instance" "node" {
   name = huaweicloud_cce_node.node_1.name
 }
-
+*/
 variable "access_key" {
   type = string
 }
@@ -25,7 +25,7 @@ variable "emojivote_db_password" {
 variable "swr_repo_name" {
   type = string
 }
-
+/*
 output "rds_emoji_private_ip" {
   value = huaweicloud_rds_instance.rds_emoji.fixed_ip
 }
@@ -41,3 +41,4 @@ output "docker_instance_public_ip" {
 output "nginx_ingress_controller_ip" {
   value = huaweicloud_vpc_eip.eip_nginx_ingress_controller.address
 }
+*/
