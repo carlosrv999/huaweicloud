@@ -35,13 +35,42 @@ resource "huaweicloud_compute_eip_associate" "associated" {
   instance_id = huaweicloud_compute_instance.ssh_docker_instance.id
 }
 
+resource "time_sleep" "wait_4_minutes" {
+  depends_on = [huaweicloud_compute_instance.ssh_docker_instance]
+  create_duration = "240s"
+}
+
+resource "null_resource" "install_software" {
+  provisioner "remote-exec" {
+    connection {
+      host        = huaweicloud_vpc_eip.docker_instance_eip.address
+      user        = "root"
+      type        = "ssh"
+      private_key = file("./keypair-terraform.pem")
+      timeout     = "2m"
+    }
+
+    inline = [
+      "curl -fsSL https://get.docker.com -o /root/get-docker.sh",
+      "sh /root/get-docker.sh",
+      "curl -sL https://deb.nodesource.com/setup_16.x | bash -",
+      "apt-get install nodejs -y",
+      "apt-get install mysql-client -y",
+    ]
+  }
+
+  depends_on = [
+    time_sleep.wait_4_minutes,
+  ]
+}
+
 resource "null_resource" "execute_commands" {
   provisioner "remote-exec" {
     connection {
-      host        = "${huaweicloud_vpc_eip.docker_instance_eip.address}"
+      host        = huaweicloud_vpc_eip.docker_instance_eip.address
       user        = "root"
       type        = "ssh"
-      private_key = "${file("./keypair-terraform.pem")}"
+      private_key = file("./keypair-terraform.pem")
       timeout     = "2m"
     }
 
@@ -55,6 +84,7 @@ resource "null_resource" "execute_commands" {
   }
 
   depends_on = [
+    null_resource.install_software,
     huaweicloud_compute_instance.ssh_docker_instance,
   ]
 }
