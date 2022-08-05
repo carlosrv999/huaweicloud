@@ -1,4 +1,4 @@
-/*resource "huaweicloud_rds_instance" "rds_emoji" {
+resource "huaweicloud_rds_instance" "rds_emoji" {
   name              = "rds-tf-emoji"
   flavor            = "rds.mysql.n1.large.2"
   vpc_id            = huaweicloud_vpc.vpc.id
@@ -45,4 +45,3 @@ resource "null_resource" "update_manifests" {
     command = "bash update-manifests.sh ${huaweicloud_rds_instance.rds_emoji.fixed_ip} ${huaweicloud_rds_instance.rds_vote.fixed_ip} ${var.emojivote_db_password} ${var.region} ${var.swr_repo_name}"
   }
 }
-*/

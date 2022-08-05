@@ -34,7 +34,7 @@ resource "huaweicloud_compute_eip_associate" "associated" {
   public_ip   = huaweicloud_vpc_eip.docker_instance_eip.address
   instance_id = huaweicloud_compute_instance.ssh_docker_instance.id
 }
-/*
+
 resource "null_resource" "execute_commands" {
   provisioner "remote-exec" {
     connection {
@@ -58,4 +58,3 @@ resource "null_resource" "execute_commands" {
     huaweicloud_compute_instance.ssh_docker_instance,
   ]
 }
-*/

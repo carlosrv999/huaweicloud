@@ -74,7 +74,7 @@ resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_nodejs" {
   remote_ip_prefix  = "0.0.0.0/0"
   description       = "Allow nodejs tcp 3000 from anywhere"
 }
-/*
+
 resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_pods_rds" {
   security_group_id = huaweicloud_networking_secgroup.secgroup_rds.id
   direction         = "ingress"
@@ -93,7 +93,7 @@ resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_nodes_rds" 
   protocol          = "tcp"
   port_range_min    = 3306
   port_range_max    = 3306
-  remote_group_id   = sort(data.huaweicloud_compute_instance.node.security_group_ids)[0]
+  remote_ip_prefix  = "10.210.0.0/16"
   description       = "Allow nodes to access RDS"
 }
 
@@ -115,7 +115,7 @@ resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_rds_out" {
   remote_ip_prefix  = "0.0.0.0/0"
   description       = "Allow outgoing communication"
 }
-*/
+
 resource "huaweicloud_networking_secgroup_rule" "secgroup_rule_allow_rds_self" {
   security_group_id = huaweicloud_networking_secgroup.secgroup_rds.id
   direction         = "ingress"
@@ -163,7 +163,7 @@ resource "huaweicloud_vpc_eip" "eip_nginx_ingress_controller" {
     charge_mode = "traffic"
   }
 }
-/*
+
 resource "huaweicloud_lb_loadbalancer" "elb_nginx_ingress_controller" {
   name          = "elb-tf-nginx-ingress-controller-k8s"
   vip_subnet_id = huaweicloud_vpc_subnet.subnet-az2-public.subnet_id
@@ -173,4 +173,7 @@ resource "huaweicloud_vpc_eip_associate" "elb_nginx_eip_associate" {
   public_ip = huaweicloud_vpc_eip.eip_nginx_ingress_controller.address
   port_id   = huaweicloud_lb_loadbalancer.elb_nginx_ingress_controller.vip_port_id
 }
-*/
+
+output "eip_load_balancer" {
+  value = huaweicloud_vpc_eip.eip_nginx_ingress_controller.address
+}

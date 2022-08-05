@@ -1,4 +1,4 @@
-/*resource "huaweicloud_cce_cluster" "cluster_cce" {
+resource "huaweicloud_cce_cluster" "cluster_cce" {
   name                   = "cce-tf-demo-utp"
   flavor_id              = "cce.s1.small"
   vpc_id                 = huaweicloud_vpc.vpc.id
@@ -62,4 +62,3 @@ resource "local_file" "create_kubeconfig_file" {
   content  = huaweicloud_cce_cluster.cluster_cce.kube_config_raw
   filename = "kubeconfig.json"
 }
-*/
