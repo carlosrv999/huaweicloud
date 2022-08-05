@@ -23,7 +23,6 @@ resource "huaweicloud_compute_instance" "ssh_docker_instance" {
   key_pair           = huaweicloud_compute_keypair.keypair_demo.name
   system_disk_size   = 100
   system_disk_type   = "GPSSD"
-  user_data          = "#!/bin/bash\ncurl -fsSL https://get.docker.com -o /root/get-docker.sh\nsh /root/get-docker.sh\ncurl -sL https://deb.nodesource.com/setup_16.x | bash -\napt-get install nodejs -y\napt-get install mysql-client -y"
 
   network {
     uuid = huaweicloud_vpc_subnet.subnet-az1-private.id
